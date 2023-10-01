@@ -10,7 +10,7 @@ Global:
   # evaluation is run every 2000 iterations
   eval_batch_step: [0, 2000]
   cal_metric_during_train: False
-  pretrained_model: ./pretrain_models/MobileNetV3_large_x0_5_pretrained
+  pretrained_model: ./ch_PP-OCRv4_det_train/best_accuracy
   checkpoints:
   save_inference_dir:
   use_visualdl: False
@@ -101,7 +101,7 @@ Train:
     shuffle: True
     drop_last: False
     batch_size_per_card: 16
-    num_workers: 8
+    num_workers: 1
     use_shared_memory: True
 
 Eval:
@@ -129,5 +129,5 @@ Eval:
     shuffle: False
     drop_last: False
     batch_size_per_card: 1 # must be 1
-    num_workers: 8
+    num_workers: 1
     use_shared_memory: True
