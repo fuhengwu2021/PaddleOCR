@@ -37,6 +37,7 @@ from ppocr.utils.save_load import load_model
 from ppocr.utils.utility import set_seed
 from ppocr.modeling.architectures import apply_to_static
 import tools.program as program
+from hiq.vis import print_model
 
 dist.get_world_size()
 
@@ -194,6 +195,7 @@ def main(config, device, logger, vdl_writer):
 
     if config['Global']['distributed']:
         model = paddle.DataParallel(model)
+    print_model(model)
     # start train
     program.train(config, train_dataloader, valid_dataloader, device, model,
                   loss_class, optimizer, lr_scheduler, post_process_class,

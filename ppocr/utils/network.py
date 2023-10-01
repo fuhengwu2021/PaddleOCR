@@ -52,7 +52,8 @@ def maybe_download(model_storage_directory, url):
         tmp_path = os.path.join(model_storage_directory, url.split('/')[-1])
         print('download {} to {}'.format(url, tmp_path))
         os.makedirs(model_storage_directory, exist_ok=True)
-        download_with_progressbar(url, tmp_path)
+        if not os.path.exists(tmp_path):
+            download_with_progressbar(url, tmp_path)
         with tarfile.open(tmp_path, 'r') as tarObj:
             for member in tarObj.getmembers():
                 filename = None
