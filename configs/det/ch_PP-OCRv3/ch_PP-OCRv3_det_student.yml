@@ -1,7 +1,7 @@
 Global:
   debug: false
   use_gpu: true
-  epoch_num: 500
+  epoch_num: 30
   log_smooth_window: 20
   print_batch_step: 10
   save_model_dir: ./output/ch_PP-OCR_V3_det/
@@ -10,7 +10,7 @@ Global:
   - 0
   - 400
   cal_metric_during_train: false
-  pretrained_model: null
+  pretrained_model: ./pretrain_models/MobileNetV3_large_x0_5_pretrained
   checkpoints: null
   save_inference_dir: null
   use_visualdl: false

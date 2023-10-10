@@ -2810,6 +2810,7 @@ def get_main_app(argv=[]):
     arg_parser.add_argument("--lang", type=str, default='en', nargs="?")
     arg_parser.add_argument("--gpu", type=str2bool, default=True, nargs="?")
     arg_parser.add_argument("--kie", type=str2bool, default=False, nargs="?")
+    arg_parser.add_argument('--return_word_box', action='store_true', help='Description of the argument')
     arg_parser.add_argument("--predefined_classes_file",
                             default=os.path.join(os.path.dirname(__file__), "data", "predefined_classes.txt"),
                             nargs="?")

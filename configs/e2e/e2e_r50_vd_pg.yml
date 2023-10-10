@@ -4,14 +4,14 @@ Global:
   log_smooth_window: 20
   print_batch_step: 10
   save_model_dir: ./output/pgnet_r50_vd_totaltext/
-  save_epoch_step: 10
+  save_epoch_step: 50
   # evaluation is run every 0 iterationss after the 1000th iteration
-  eval_batch_step: [ 0, 1000 ]
+  eval_batch_step: [ 0, 3000 ]
   cal_metric_during_train: False
   pretrained_model:
   checkpoints:
   save_inference_dir:
-  use_visualdl: False
+  use_visualdl: True
   infer_img:
   infer_visual_type: EN # two mode: EN is for english datasets, CN is for chinese datasets
   valid_set: totaltext # two mode: totaltext valid curved words, partvgg valid non-curved words
