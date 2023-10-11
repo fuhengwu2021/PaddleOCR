@@ -36,6 +36,7 @@ from ppocr.utils.logging import get_logger
 from ppocr.utils.loggers import VDLLogger, WandbLogger, Loggers
 from ppocr.utils import profiler
 from ppocr.data import build_dataloader
+from hiq import draw_image
 
 
 class ArgsParser(ArgumentParser):
@@ -225,6 +226,8 @@ def train(config,
     train_stats = TrainingStats(log_smooth_window, ['lr'])
     model_average = False
     model.train()
+    from hiq.vis import print_model
+    print_model(model, max_depth=2)
 
     use_srn = config['Architecture']['algorithm'] == "SRN"
     extra_input_models = [
@@ -300,6 +303,8 @@ def train(config,
                 elif algorithm in ['CAN']:
                     preds = model(batch[:3])
                 else:
+                    if idx == 0:
+                        draw_image(images)
                     preds = model(images)
                 loss = loss_class(preds, batch)
                 avg_loss = loss['loss']

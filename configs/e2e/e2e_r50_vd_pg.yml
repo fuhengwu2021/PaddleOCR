@@ -27,7 +27,7 @@ Architecture:
   algorithm: PGNet
   Transform:
   Backbone:
-    name: ResNet
+    name: ResNet # PGNet-A
     layers: 50
   Neck:
     name: PGFPN
@@ -76,10 +76,10 @@ Train:
     transforms:
       - DecodeImage: # load image
           img_mode: BGR
-          channel_first: False
+          channel_first: False # NHWC
       - E2ELabelEncodeTrain:
       - PGProcessTrain:
-          batch_size: 14  # same as loader: batch_size_per_card
+          batch_size: 1  # same as loader: batch_size_per_card
           use_resize: True
           use_random_crop: False
           min_crop_size: 24
@@ -89,10 +89,10 @@ Train:
       - KeepKeys:
           keep_keys: [ 'images', 'tcl_maps', 'tcl_label_maps', 'border_maps','direction_maps', 'training_masks', 'label_list', 'pos_list', 'pos_mask' ] # dataloader will return list in this order
   loader:
-    shuffle: True
+    shuffle: False
     drop_last: True
-    batch_size_per_card: 14
-    num_workers: 16
+    batch_size_per_card: 1
+    num_workers: 1
 
 Eval:
   dataset:
@@ -118,4 +118,4 @@ Eval:
     shuffle: False
     drop_last: False
     batch_size_per_card: 1 # must be 1
-    num_workers: 2
+    num_workers: 1
