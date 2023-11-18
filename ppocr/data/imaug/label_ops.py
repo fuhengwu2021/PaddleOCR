@@ -282,7 +282,8 @@ class KieLabelEncode(object):
             lines = fin.readlines()
             for idx, line in enumerate(lines):
                 line = line.strip("\n")
-                self.label2classid_map[line] = idx
+                x = line.split(' ')[0]
+                self.label2classid_map[int(x)] = idx
         self.norm = norm
         self.directed = directed
 
