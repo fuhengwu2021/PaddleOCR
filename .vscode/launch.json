@@ -1,0 +1,75 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "pgnet_train",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/tools/train.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["--config", "configs/e2e/e2e_r50_vd_pg.yml", "-o", "Global.pretrained_model=./pretrain_models/train_step1/best_accuracy", "Global.load_static_weights=False"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "pgnet_infer",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/tools/infer/predict_e2e.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["--e2e_algorithm=PGNet", "--image_dir=fuheng-dev/customer_issue_curved_text.png", "--e2e_model_dir=./inference/e2e_server_pgnetA_infer", "--e2e_pgnet_valid_set=totaltext", "--use_gpu=True"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "pgnet_infer_fuheng_curved_1",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/tools/infer/predict_e2e.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["--e2e_algorithm=PGNet", "--image_dir=fuheng-dev/subplot_1.jpg", "--e2e_model_dir=./inference/e2e_server_pgnetA_infer", "--e2e_pgnet_valid_set=totaltext", "--use_gpu=True"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "pgnet_infer_fuheng_curved_2",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/tools/infer/predict_e2e.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["--e2e_algorithm=PGNet", "--image_dir=fuheng-dev/subplot_2.jpg", "--e2e_model_dir=./inference/e2e_server_pgnetA_infer", "--e2e_pgnet_valid_set=totaltext", "--use_gpu=True"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "pgnet_infer_fuheng_curved_3",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/tools/infer/predict_e2e.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["--e2e_algorithm=PGNet", "--image_dir=fuheng-dev/subplot_3.jpg", "--e2e_model_dir=./inference/e2e_server_pgnetA_infer", "--e2e_pgnet_valid_set=totaltext", "--use_gpu=True"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "pgnet_infer_fuheng_curved_4",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/tools/infer/predict_e2e.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["--e2e_algorithm=PGNet", "--image_dir=fuheng-dev/subplot_4.jpg", "--e2e_model_dir=./inference/e2e_server_pgnetA_infer", "--e2e_pgnet_valid_set=totaltext", "--use_gpu=True"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "sdmgr_infer",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/tools/infer_kie.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["-c", "configs/kie/sdmgr/kie_unet_sdmgr.yml", "-o", "Global.checkpoints=kie_vgg16/best_accuracy", "Global.infer_img=train_data/wildreceipt/1.txt"],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
